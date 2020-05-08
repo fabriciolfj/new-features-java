@@ -21,5 +21,12 @@ public class Main {
          * */
         Function<Double, String> divideByTwoIncrementAndCreateString = divideByTwo.andThen(incrementAndCreateString);
         printResult.accept(divideByTwoIncrementAndCreateString.apply(4.0));
+
+        /**
+         * mesmo resultado so que de maneira inversa
+         * */
+        Function<Double, String> divideByTwoIncrementAndCreateString2 = incrementAndCreateString.compose(divideByTwo);
+        printResult.accept(divideByTwoIncrementAndCreateString2.apply(4.0));
+
     }
 }
