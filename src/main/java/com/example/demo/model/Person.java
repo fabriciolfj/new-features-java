@@ -10,6 +10,12 @@ public class Person {
         this.lasName = lasName;
     }
 
+    public Person(int age, String firstName) {
+        this.age = age;
+        this.firstName = firstName;
+        this.lasName = "nothing";
+    }
+
     public void setRecord(String record) {
         this.record = record;
     }
@@ -28,5 +34,15 @@ public class Person {
 
     public String getRecord() {
         return record;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "age=" + age +
+                ", firstName='" + firstName + '\'' +
+                ", lasName='" + lasName + '\'' +
+                ", record='" + record + '\'' +
+                '}';
     }
 }
