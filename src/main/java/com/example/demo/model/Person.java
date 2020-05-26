@@ -4,6 +4,10 @@ public class Person {
     private int age;
     private String firstName, lasName, record;
 
+    public Person() {
+
+    }
+
     public Person(int age, String firstName, String lasName) {
         this.age = age;
         this.firstName = firstName;
@@ -34,6 +38,14 @@ public class Person {
 
     public String getRecord() {
         return record;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     @Override
