@@ -4,6 +4,7 @@ import com.example.demo.model.Person;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -31,6 +32,12 @@ public class CollectionMain {
         System.out.println(set);
 
         new CollectionMain().map();
+        new CollectionMain().hasSet();
+        new CollectionMain().joining();
+        new CollectionMain().sum();
+        new CollectionMain().summary();
+        new CollectionMain().partitionBy();
+        new CollectionMain().groupingBy();
 
     }
 
@@ -46,5 +53,47 @@ public class CollectionMain {
 
         System.out.println(map);
 
+    }
+
+    private void sum() {
+        int sum = persons.stream().collect(Collectors.summingInt(Person::getAge));
+        System.out.println(sum);
+    }
+
+    private void joining() {
+        List<String> list1 = List.of("a", "b", "c", "d");
+        String result = list1.stream()
+                .collect(Collectors.joining());
+        System.out.println(result);
+
+        result = list1.stream().collect(Collectors.joining(", "));
+        System.out.println(result);
+
+        result = list1.stream()
+                .collect(Collectors.joining(", ", "The result:", ""));
+        System.out.println(result);
+    }
+
+    private void summary() {
+        IntSummaryStatistics stats = persons.stream()
+                .collect(Collectors.summarizingInt(Person::getAge));
+
+        System.out.println(stats);
+    }
+
+    private void partitionBy() {
+        Map<Boolean, List<Person>> map2 = persons
+                .stream()
+                .collect(Collectors.partitioningBy(p ->p.getAge() > 24));
+
+        System.out.println(map2);
+    }
+
+    private void groupingBy() {
+        Map<Integer, List<Person>> map = persons
+                .stream()
+                .collect(Collectors.groupingBy(Person::getAge));
+
+        System.out.println(map);
     }
 }
